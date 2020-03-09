@@ -72,17 +72,17 @@ const CustomDrawerComponent = (props) => {
     )
 }
 
-const MainStack =  createBottomTabNavigator();
-const RootStack =  createDrawerNavigator();
+const MainTabs =  createBottomTabNavigator();
+const RootDrawer =  createDrawerNavigator();
 
 // include all screens from the config array to the tab bar navigator
-function MainStackScreen() {
+function MainTabsScreen() {
     return (
-        <MainStack.Navigator>
+        <MainTabs.Navigator>
             {screensConfigs.map((screenConfig) => {
                 if(screenConfig.showsInTabs) {
                     return (
-                        <MainStack.Screen 
+                        <MainTabs.Screen 
                             key={screenConfig.name}
                             name={screenConfig.name}
                             component={screenConfig.screen}
@@ -91,7 +91,7 @@ function MainStackScreen() {
                     );
                 }
                 return (
-                    <MainStack.Screen 
+                    <MainTabs.Screen 
                         key={screenConfig.name}
                         name={screenConfig.name}
                         component={screenConfig.screen}
@@ -103,7 +103,7 @@ function MainStackScreen() {
                     />
                 );
             })}
-        </MainStack.Navigator>
+        </MainTabs.Navigator>
     );
   }
 
@@ -112,14 +112,14 @@ const Navigation = () => {
         // wrap the whole tab bar navigation with a drawer navigator
         // with a custom drawer component
         // which lists creates the drawer tabs from the config file
-        <RootStack.Navigator
+        <RootDrawer.Navigator
             drawerContent={(props) => <CustomDrawerComponent {...props}/> }
         >
-            <RootStack.Screen 
+            <RootDrawer.Screen 
                 name="Main"
-                component={MainStackScreen}
+                component={MainTabsScreen}
             />
-        </RootStack.Navigator>
+        </RootDrawer.Navigator>
     );
 }
 

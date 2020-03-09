@@ -15,7 +15,11 @@ const SetParamsScreen = ({ navigation }) => {
                 placeholder="Enter param..."
             />
             <Button
-                onPress={() => navigation.navigate('Receive a param', {test: param})}
+                onPress={
+                  () => { 
+                    navigation.navigate('Receive a param', {test: param})
+                    // navigation.navigate('Receive a param')
+                }}
             >
                 <Text>'NAVIGATE' to Screen Two With Param</Text>
             </Button>
